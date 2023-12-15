@@ -6,16 +6,20 @@ public class Wall implements Structure {
 
     @Override
     public Optional<Block> findBlockByColor(String color) {
-        return Optional.empty();
+        return blocks.stream()
+                .filter(block -> block.getColor().equals(color))
+                .findAny();
     }
 
     @Override
     public List<Block> findBlocksByMaterial(String material) {
-        return null;
+        return blocks.stream()
+                .filter(block -> block.getMaterial().equals(material))
+                .toList();
     }
 
     @Override
     public int count() {
-        return 0;
+        return blocks.size();
     }
 }
